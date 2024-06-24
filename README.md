@@ -6,3 +6,6 @@ FIRST GUI WxWidget Sample Project
 
 
 ![Recording 2024-06-23 171103](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/023f3d21-be33-4b26-858e-98e325b40379)
+
+
+![styles](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/3ab188e7-430a-43d3-acb7-4b15611fa20e)
