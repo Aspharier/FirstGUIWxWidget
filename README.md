@@ -9,3 +9,6 @@ FIRST GUI WxWidget Sample Project
 
 
 ![styles](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/3ab188e7-430a-43d3-acb7-4b15611fa20e)
+
+
+![static event handling](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/f768c675-083c-42e2-9c58-1e4041e25d9b)
