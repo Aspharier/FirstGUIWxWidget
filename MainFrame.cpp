@@ -16,14 +16,20 @@ wxEND_EVENT_TABLE()*/
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 
-	wxPanel* panel = new wxPanel(this);
-	wxButton* button = new wxButton(panel,wxID_ANY,:"Button",wxPoint(300,250),wxSize(200,100));
+	wxPanel* panel = new wxPanel(this,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxWANTS_CHARS);
+	wxButton* button1 = new wxButton(panel,wxID_ANY,"Button 1",wxPoint(300,150),wxSize(200,100));
+	wxButton* button2 = new wxButton(panel, wxID_ANY, "Button 2", wxPoint(300, 350), wxSize(200, 100));
+
+	button1->Bind(wxEVT_CHAR_HOOK,&MainFrame::OnKeyEvent,this);
+	CreateStatusBar();
+
+	/*wxButton* button = new wxButton(panel, wxID_ANY, "Button", wxPoint(300, 250), wxSize(200, 100));
 
 	wxStatusBar* statusBar = CreateStatusBar();
 
 	statusBar->SetDoubleBuffered(true);
 	panel->Bind(wxEVT_MOTION,&MainFrame::OnMouseEvent,this);
-	button->Bind(wxEVT_MOTION,&MainFrame::OnMouseEvent,this);
+	button->Bind(wxEVT_MOTION,&MainFrame::OnMouseEvent,this);*/
 
 		
 	/*wxButton* button1 = new wxButton(panel, wxID_ANY, "Button 1", wxPoint(300, 275), wxSize(200, 50));
@@ -68,7 +74,24 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) 
 	wxRadioBox* radiBox = new wxRadioBox(panel,wxID_ANY,"RadioBox",wxPoint(555,450),wxDefaultSize,choices,3,wxRA_SPECIFY_ROWS);*/
 }
 
-void MainFrame::OnMouseEvent(wxMouseEvent& evt) {
+void MainFrame::OnKeyEvent(wxKeyEvent& evt) {
+	if (evt.GetKeyCode() == WXK_TAB) {
+		wxWindow* window = (wxWindow*)evt.GetEventObject();
+		window->Navigate();
+	}
+	wxChar keyChar = evt.GetUnicodeKey();
+
+	if (keyChar == WXK_NONE) {
+		int keyCode = evt.GetKeyCode();
+		wxLogStatus("Key Event %d", keyCode);
+	}
+	else {
+		wxLogStatus("Key Event %c", keyChar);
+	}
+
+}
+
+/*void MainFrame::OnMouseEvent(wxMouseEvent& evt) {
 	wxPoint mousePos = wxGetMousePosition();
 	mousePos = this->ScreenToClient(mousePos);
 	wxString message = wxString::Format("Mouse Event Detected! (x=%d y=%d)", mousePos.x, mousePos.y);
