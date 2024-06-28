@@ -24,3 +24,7 @@ Added Event Propogation_
 Added Mouse Events_
 
 ![Mouse Event](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/415bb27c-842b-4764-96d8-507a3f9fb894)
+
+Added KeyBoard Event
+
+![Keyboard event](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/16ec176e-ad4b-41e0-8b73-b5e8334e293a)
