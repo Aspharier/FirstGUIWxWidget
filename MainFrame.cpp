@@ -17,13 +17,22 @@ wxEND_EVENT_TABLE()*/
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 
 	wxPanel* panel = new wxPanel(this);
-	wxButton* button1 = new wxButton(panel,wxID_ANY,"Button 1",wxPoint(300,275),wxSize(200,50));
+	wxButton* button = new wxButton(panel,wxID_ANY,:"Button",wxPoint(300,250),wxSize(200,100));
+
+	wxStatusBar* statusBar = CreateStatusBar();
+
+	statusBar->SetDoubleBuffered(true);
+	panel->Bind(wxEVT_MOTION,&MainFrame::OnMouseEvent,this);
+	button->Bind(wxEVT_MOTION,&MainFrame::OnMouseEvent,this);
+
+		
+	/*wxButton* button1 = new wxButton(panel, wxID_ANY, "Button 1", wxPoint(300, 275), wxSize(200, 50));
 	wxButton* button2 = new wxButton(panel, wxID_ANY, "Button 2", wxPoint(300, 350), wxSize(200, 50));
 
 	/*wxSlider* slider = new wxSlider(panel, wxID_ANY, 0, 0, 100, wxPoint(300, 200), wxSize(200, -1));
 	wxTextCtrl* text = new wxTextCtrl(panel,wxID_ANY,"",wxPoint(300,375),wxSize(200,-1));*/
 	
-	this->Bind(wxEVT_CLOSE_WINDOW,&MainFrame::OnClose,this);
+	/*this->Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
 	this->Bind(wxEVT_BUTTON,&MainFrame::OnAnyButtonClicked,this);
 	button1->Bind(wxEVT_BUTTON,&MainFrame::OnButton1Clicked,this);
 	button2->Bind(wxEVT_BUTTON, &MainFrame::OnButton2Clicked, this);
@@ -32,8 +41,6 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) 
 	text->Bind(wxEVT_TEXT,&MainFrame::OnTextChanged,this);
 
 	button->Unbind(wxEVT_BUTTON,&MainFrame::OnButtonClicked,this);*/
-
-	CreateStatusBar();
 
 	/*wxButton* button = new wxButton(panel, wxID_ANY, "Button", wxPoint(150, 50), wxSize(100, 35), wxBU_LEFT);
 	wxCheckBox* checkBox = new wxCheckBox(panel,wxID_ANY,"CheckBox",wxPoint(550,50),wxDefaultSize,wxCHK_3STATE | wxCHK_ALLOW_3RD_STATE_FOR_USER);
@@ -60,7 +67,14 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) 
 
 	wxRadioBox* radiBox = new wxRadioBox(panel,wxID_ANY,"RadioBox",wxPoint(555,450),wxDefaultSize,choices,3,wxRA_SPECIFY_ROWS);*/
 }
-void MainFrame::OnClose(wxCloseEvent& evt) {
+
+void MainFrame::OnMouseEvent(wxMouseEvent& evt) {
+	wxPoint mousePos = wxGetMousePosition();
+	mousePos = this->ScreenToClient(mousePos);
+	wxString message = wxString::Format("Mouse Event Detected! (x=%d y=%d)", mousePos.x, mousePos.y);
+	wxLogStatus(message);
+}
+/*void MainFrame::OnClose(wxCloseEvent& evt) {
 	wxLogMessage("Frame Message");
 	evt.Skip();
 }
