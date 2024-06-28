@@ -20,3 +20,7 @@ Added Static Event Handling_
 Added Event Propogation_
 
 ![eventPropogation](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/0a3284c0-2d1b-47bc-b9e1-a4cfaff6e549)
+
+Added Mouse Events_
+
+![Mouse Event](https://github.com/Aspharier/FirstGUIWxWidget/assets/113495930/415bb27c-842b-4764-96d8-507a3f9fb894)
